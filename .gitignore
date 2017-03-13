@@ -29,6 +29,10 @@ build/Release
 # Dependency directories
 node_modules
 jspm_packages
+
+
+# Bower modules are not needed to be in Git
+bower_modules
 bower_components
 
 # Optional npm cache directory
