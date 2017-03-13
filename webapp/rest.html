@@ -1,0 +1,103 @@
+<div ng-cloak>
+  <md-content>
+    <md-tabs md-dynamic-height md-border-bottom md-selected="myTabIndex">
+      <md-tab id="regTab" label="ONBOARD NEW RESTUARANT">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">Add a new restuarant</h1>
+          <form layout="column" flex="50" layout-align="start center">
+            <md-input-container>
+              <label>Name</label>              
+              <input ng-model="restuarant.name" name="name" type="text" required />              
+            </md-input-container>
+            <md-input-container >     
+              <label>Location</label>
+              <md-select name="location" ng-model="restuarant.location">
+                <md-option value="BANGALORE">BANGALORE</md-option>
+                <md-option value="PUNE">PUNE</md-option>
+                <md-option value="MUMBAI">MUMBAI</md-option>
+                <md-option value="DELHI">DELHI</md-option>
+              </md-select>
+            </md-input-container>
+            <md-input-container >     
+              <label>Cuisines</label>
+              <md-select name="cuisines" ng-model="restuarant.cuisines" multiple>
+                <md-option value="Italian">Italian</md-option>
+                <md-option value="Indian">Indian</md-option>
+                <md-option value="Chinese">Chinese</md-option>
+              </md-select>
+            </md-input-container>
+            <div layout="column" data-ng-repeat="input in tables" >
+              <div layout="row" layout-align="start" flex>
+                <md-input-container flex="40">
+                  <label>Give your space a name!!!</label>
+                  <input type="text" name="tableName" ng-model="table[input].name" required />
+                </md-input-container>
+
+                <md-input-container flex="50">
+                  <label>Table Capacity</label>
+                  <md-select name="tableCapacity" ng-model="table[input].capacity" required>
+                    <md-option value="Table for 2">Table for 2</md-option>
+                    <md-option value="Table for 4">Table for 4</md-option>
+                    <md-option value="Table for 6">Table for 6</md-option>
+                  </md-select>                
+                </md-input-container>
+              
+              <p>Selected Value: <span class="radioValue">{{ table[input].status }}</span> </p>
+
+              <md-radio-group ng-model="table[input].status">
+                <md-radio-button value="available" class="md-primary">Available</md-radio-button>
+                <md-radio-button value="reserved"> Reserved </md-radio-button>              
+              </md-radio-group>
+              </div>
+            </div>
+            <md-button class="md-icon-button" id="addTable" ng-click="add()" title="Add table"><md-icon>add_circle</md-icon></md-button> 
+            <md-button class="md-icon-button" id="removeTable" ng-click="remove()" title="Remove table"><md-icon>remove_circle</md-icon></md-button> 
+          </form>
+          <md-button class="md-raised md-primary" id="save" ng-click="save()">Save</md-button>
+        </md-content>
+      </md-tab>
+      <md-tab label="EDIT/REMOVE RESTUARANT" ng-click="tabChange()">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">Available Restuarants</h1>
+          <md-list flex >
+            <md-subheader class="md-no-sticky">Modify/Remove Restuarants:</md-subheader>            
+            <md-list-item ng-repeat="restuarant in restuarants track by $index">           
+              <div flex="70" class="md-list-item-text" layout="row" layout-align="start center">                
+                <h4>{{restuarant.Name}}</h4><br/>                
+                <h6>&nbsp;@{{restuarant.Location}}</h6>                
+              </div>
+              <div flex="30" layout="row" layout-align="end center">
+                <md-button class="md-icon-button" ng-click="editRest(restuarant)" title="Edit"><md-icon>mode_edit</md-icon></md-button> 
+                
+                <md-button class="md-icon-button" ng-click="showConfirmDel($event,restuarant)" title="Delete"><md-icon>cancel</md-icon></md-button> 
+              </div>
+
+              
+              
+            </md-list-item>
+            
+          </md-list>
+          <div ui-view=''>
+
+          </div>
+          
+          
+          
+        </md-content>
+      </md-tab>
+      <md-tab label="BOOKINGS">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">Get bookings for your table between a time range</h1>
+          <p>Shows all booking for a Restuarant for a given table/capacity!!! Work Under Process!!!! :)</p>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+</div>
+
+
+
+
+  
+  
+

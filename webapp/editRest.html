@@ -1,0 +1,71 @@
+<md-card>
+             
+  <md-card-content>
+      <h2>EDIT RESTUARANT:</h2>
+      <p>Modify capacity/availability of a specific table</p>
+      <form layout="column" flex="50" layout-align="start center">
+            <md-input-container>
+              <label>Name</label>              
+              <input ng-model="restuarant.Name" name="name" type="text" required disabled />              
+            </md-input-container>
+            <md-input-container >     
+              <label>Location</label>
+              <md-select name="location" ng-model="restuarant.Location">
+                <md-option value="BANGALORE">BANGALORE</md-option>
+                <md-option value="PUNE">PUNE</md-option>
+                <md-option value="MUMBAI">MUMBAI</md-option>
+                <md-option value="DELHI">DELHI</md-option>
+              </md-select>
+            </md-input-container>
+            <md-input-container >     
+              <label>Cuisines</label>
+              <md-select name="cuisines" ng-model="restuarant.Cuisines" multiple>
+                <md-option value="Italian">Italian</md-option>
+                <md-option value="Indian">Indian</md-option>
+                <md-option value="Chinese">Chinese</md-option>
+              </md-select>
+            </md-input-container>
+            <h4>TABLES:</h4>
+            <div layout="column" ng-repeat="table in restuarant.Tables" >
+              <div layout="row">
+
+                <md-input-container flex="40">
+                  <label>Give your space a name!!!</label>
+                  <input type="text" name="tableName" ng-model="table.name" required />
+                </md-input-container>
+
+                <md-input-container flex="50">
+                  <label>Table Capacity</label>
+                  <md-select name="tableCapacity" ng-model="table.capacity" required>
+                    <md-option value="Table for 2">Table for 2</md-option>
+                    <md-option value="Table for 4">Table for 4</md-option>
+                    <md-option value="Table for 6">Table for 6</md-option>
+                  </md-select>                
+                </md-input-container>
+              
+                <p>Availability: <span class="radioValue">{{ table.status }}</span> </p>
+
+                <md-radio-group ng-model="table.status">
+                  <md-radio-button value="available" class="md-primary">Available</md-radio-button>
+                  <md-radio-button value="reserved"> Reserved </md-radio-button>              
+                </md-radio-group>
+              </div>
+                
+
+            </div>
+            
+           <!--  <button type="button" id="add" ng-click="add()">Add</button>
+            <button type="button" id="remove" ng-click="remove()">Remove</button> -->
+          </form>
+
+
+
+          <md-button class="md-raised md-primary" id="updateRest" ng-click="update()">Update</md-button>
+        
+  </md-card-content>
+             
+             
+</md-card> 
+
+
+  
